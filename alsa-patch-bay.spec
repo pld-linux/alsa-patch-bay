@@ -25,7 +25,7 @@ BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 %{?with_ladcca:BuildRequires:	ladcca-devel}
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	%{name}-ui
+Requires:	%{name}-ui = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +45,7 @@ Summary:	ALSA audio driver for ALSA Patch Bay
 Summary(pl):	Sterownik d¼wiêku ALSA dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-ui
+Requires:	%{name}-ui = %{version}-%{release}
 
 %description driver-alsa
 ALSA audio driver for ALSA Patch Bay.
@@ -58,9 +58,9 @@ Summary:	JACK audio driver for ALSA Patch Bay
 Summary(pl):	Sterownik d¼wiêku JACK dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Provides:	jack-patch-bay
-Requires:	%{name}-driver-alsa
-Requires:	%{name}-ui
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-driver-alsa = %{version}-%{release}
+Requires:	%{name}-ui = %{version}-%{release}
 
 %description driver-jack
 JACK audio driver for ALSA Patch Bay.
@@ -73,7 +73,7 @@ Summary:	FLTK-based GUI for ALSA Patch Bay
 Summary(pl):	Oparte na FLTK GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
-Provides:	%{name}-ui
+Provides:	%{name}-ui = %{version}-%{release}
 
 %description ui-fltk
 FLTK-based graphical user interface for ALSA Patch Bay.
@@ -86,7 +86,7 @@ Summary:	GTKmm-based GUI for ALSA Patch Bay
 Summary(pl):	Oparte na GTKmm GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
-Provides:	%{name}-ui
+Provides:	%{name}-ui = %{version}-%{release}
 
 %description ui-gtkmm
 GTKmm-based GUI for ALSA Patch Bay.
