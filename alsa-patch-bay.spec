@@ -109,7 +109,7 @@ Oparte na GTKmm GUI do ALSA Patch Bay.
 %configure \
 	%{!?with_fltk:--disable-fltk --disable-fltk-test} \
 	%{!?with_gtkmm:--disable-gtkmm} \
-	%{?without_ladcca:--disable-ladcca} \
+	%{!?with_ladcca:--disable-ladcca}
 	
 %{__make}
 
