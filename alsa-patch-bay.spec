@@ -5,7 +5,7 @@
 %bcond_with ladcca	# with ladcca support
 #
 Summary:	Graphical patch bay for the ALSA sequencer and JACK
-Summary(pl):	Graficzny interfejs dla sekwencera ALSY i JACKa
+Summary(pl):	Graficzny interfejs dla sekwencera ALSY i JACK-a
 Name:		alsa-patch-bay
 Version:	1.0.0
 Release:	0.1
@@ -36,7 +36,7 @@ many others.
 
 %description -l pl
 ALSA Patch Bay to graficzny interfejs dla podsystemów sequencera
-ALSY oraz d¼wiêkowego JACKa. W ³atwy sposób ³±czy porty urz±dzeñ
+ALSY oraz d¼wiêkowego JACK-a. W ³atwy sposób ³±czy porty urz±dzeñ
 MIDI i audio jak sekwencer, zewnêtrzne klawisze, synteza programowa
 i wiele innych.
 
@@ -55,7 +55,7 @@ Sterownik d¼wiêku ALSA dla ALSA Patch Bay.
 
 %package driver-jack
 Summary:	JACK audio driver for ALSA Patch Bay
-Summary(pl):	Sterownik d¼wiêku JACK dla ALSA Patch Bay
+Summary(pl):	Sterownik d¼wiêku JACK-a dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Provides:	jack-patch-bay
 Requires:	%{name} = %{version}-%{release}
@@ -66,7 +66,7 @@ Requires:	%{name}-ui = %{version}-%{release}
 JACK audio driver for ALSA Patch Bay.
 
 %description driver-jack -l pl
-Sterownik d¼wiêku JACK dla ALSA Patch Bay.
+Sterownik d¼wiêku JACK-a dla ALSA Patch Bay.
 
 %package ui-fltk
 Summary:	FLTK-based GUI for ALSA Patch Bay
