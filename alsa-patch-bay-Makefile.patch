@@ -1,20 +1,3 @@
-diff -Nur alsa-patch-bay-0.5.1/Makefile.am alsa-patch-bay-0.5.1-makefile/Makefile.am
---- alsa-patch-bay-0.5.1/Makefile.am	Sat Feb  8 00:04:41 2003
-+++ alsa-patch-bay-0.5.1-makefile/Makefile.am	Mon Apr 28 21:33:16 2003
-@@ -1,6 +1,6 @@
- SUBDIRS = m4 src
- 
--EXTRA_DIST = Doxyfile.in alsa-patch-bay.desktop jack-patch-bay.desktop
-+EXTRA_DIST = Doxyfile.in alsa-patch-bay.desktop
- 
- CLEANFILES = stamp-doxygen
- 
-@@ -14,4 +14,4 @@
- 	rm -rf doc
- 
- desktopdir = $(APB_DESKTOP_PREFIX)/applications
--desktop_DATA = alsa-patch-bay.desktop jack-patch-bay.desktop
-+desktop_DATA = alsa-patch-bay.desktop
 diff -Nur alsa-patch-bay-0.5.1/src/Makefile.am alsa-patch-bay-0.5.1-makefile/src/Makefile.am
 --- alsa-patch-bay-0.5.1/src/Makefile.am	Fri Feb  7 22:48:00 2003
 +++ alsa-patch-bay-0.5.1-makefile/src/Makefile.am	Mon Apr 28 21:36:40 2003
