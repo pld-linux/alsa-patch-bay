@@ -1,14 +1,14 @@
 #
 # Conditional build:
-%bcond_without fltk	# without FLTK UI
-%bcond_without gtkmm	# without gtkmm UI
-%bcond_with ladcca	# with ladcca support
+%bcond_without	fltk	# without FLTK UI
+%bcond_without	gtkmm	# without gtkmm UI
+%bcond_without	ladcca	# with ladcca support
 #
 Summary:	Graphical patch bay for the ALSA sequencer and JACK
 Summary(pl):	Graficzny interfejs dla sekwencera ALSY i JACK-a
 Name:		alsa-patch-bay
 Version:	1.0.0
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
@@ -20,7 +20,7 @@ URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_fltk:BuildRequires:	fltk-devel >= 1.1}
-%{?with_gtkmm:BuildRequires:	gtkmm-devel >= 2.0.0}
+%{?with_gtkmm:BuildRequires:	gtkmm22-devel}
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 %{?with_ladcca:BuildRequires:	ladcca-devel}
 BuildRequires:	libtool
@@ -86,6 +86,7 @@ Summary:	GTKmm-based GUI for ALSA Patch Bay
 Summary(pl):	Oparte na GTKmm GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
+Requires:	gtkmm22
 Provides:	%{name}-ui = %{version}-%{release}
 
 %description ui-gtkmm
