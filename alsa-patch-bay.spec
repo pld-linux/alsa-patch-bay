@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS AUTHORS README
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/applications/*.desktop
+%{_desktopdir}/*.desktop
 %attr(755,root,root) %{_libdir}/%{name}/driver/*.so
 %attr(755,root,root) %{_libdir}/%{name}/ui/*.so
 %{_pixmapsdir}/*.png
