@@ -11,6 +11,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
+# Source0-md5:	f1addf00d950ba03f0e6eb7c90b83dd4
 Patch0:		%{name}-Makefile.patch
 URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
