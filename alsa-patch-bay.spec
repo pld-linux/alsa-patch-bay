@@ -1,7 +1,7 @@
 #
 # Conditional build:
-# _with_fltk		enable fltk UI
-# _without_gtkmm	disable gtkmm UI
+# _without_fltk		- without FLTK UI
+# _without_gtkmm	- without gtkmm UI
 #
 Summary:	A GUI patchbay for ALSA and JACK
 Summary(pl):	Graficzny interfejs do zbioru patchy d¼wiêkowych dla ALSY i JACKa
@@ -15,9 +15,10 @@ Patch0:		%{name}-Makefile.patch
 URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?_with_fltk:BuildRequires:	fltk-devel >= 1.1}
+%{!?_without_fltk:BuildRequires:	fltk-devel >= 1.1}
 %{!?_without_gtkmm:BuildRequires:	gtkmm-devel >= 2.0.0}
 BuildRequires:	jack-audio-connection-kit-devel
+BuildRequires:	ladcca-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 Provides:	jack-patch-bay
@@ -32,8 +33,36 @@ ALSA Patch Bay to graficzny interfejs do zbioru patchy d¼wiêkowych dla
 API sequencera ALSY oraz API d¼wiêkowego JACK. Mo¿e u¿ywaæ FLTK 1.1
 lub GTKmm 2.0.
 
+%package driver-alsa
+Summary:	-
+Group:		X11/Applications/Sound
+Requires:	%{name}-%{version}
+
+%description driver-alsa
+
+%package driver-jack
+Summary:	-
+Group:		X11/Applications/Sound
+Requires:	%{name}-%{version}
+
+%description driver-jack
+
+%package ui-fltk
+Summary:	-
+Group:		X11/Applications/Sound
+Requires:	%{name}-%{version}
+
+%description ui-fltk
+
+%package ui-gtkmm
+Summary:	-
+Group:		X11/Applications/Sound
+Requires:	%{name}-%{version}
+
+%description ui-gtkmm
+
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 
 %build
@@ -44,11 +73,8 @@ rm -f missing
 %{__autoheader}
 %{__automake}
 %configure \
-%if %{?_with_fltk:0}%{!?_with_fltk:1}
-	--disable-fltk \
-	--disable-fltk-test \
-%endif
-%{?_without_gtkmm:--disable-gtkmm}
+	%{?_without_fltk:--disable-fltk --disable-fltk-test} \
+	%{?_without_gtkmm:--disable-gtkmm}
 
 %{__make}
 
@@ -66,8 +92,22 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/driver
-%attr(755,root,root) %{_libdir}/%{name}/driver/*.so
 %dir %{_libdir}/%{name}/ui
-%attr(755,root,root) %{_libdir}/%{name}/ui/*.so
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*.png
+
+%files driver-alsa
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/driver/alsa.so
+
+%files driver-jack
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/driver/jack.so
+
+%files ui-fltk
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/ui/fltk.so
+
+%files ui-gtkmm
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/%{name}/ui/gtkmm.so
