@@ -14,7 +14,6 @@ License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
 Patch0:		%{name}-Makefile.patch
-Patch1:		%{name}-desktop.patch
 URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -33,7 +32,6 @@ the JACK audio API. It can use FLTK 1.1 or GTKmm 2.0.0.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -f missing
