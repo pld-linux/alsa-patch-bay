@@ -1,12 +1,10 @@
+#
 # Conditional build:
 # _with_fltk		enable fltk UI
 # _without_gtkmm	disable gtkmm UI
 #
-# TODO:
-# - PL translations - I have absolutely no idea for it :/
-#   but for now it works as it should...
-#
-Summary:	A GUI patchbay for ALSA and JACK.
+Summary:	A GUI patchbay for ALSA and JACK
+Summary(pl):	Graficzny interfejs do zbioru patchy d¼wiêkowych dla ALSY i JACKa
 Name:		alsa-patch-bay
 Version:	0.5.1
 Release:	1
@@ -17,17 +15,22 @@ Patch0:		%{name}-Makefile.patch
 URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool
+%{?_with_fltk:BuildRequires:	fltk-devel >= 1.1}
+%{!?_without_gtkmm:BuildRequires:	gtkmm-devel >= 2.0.0}
 BuildRequires:	jack-audio-connection-kit-devel
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
-%{!?_without_gtkmm:BuildRequires:	gtkmm-devel}
-%{?_with_fltk:BuildRequires:	fltk-devel}
 Provides:	jack-patch-bay
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-ALSA Patch Bay is a GUI patchbay for the ALSA seq sequencer api and
-the JACK audio API. It can use FLTK 1.1 or GTKmm 2.0.0.
+ALSA Patch Bay is a GUI patchbay for the ALSA sequencer api and
+the JACK audio API. It can use FLTK 1.1 or GTKmm 2.0.
+
+%description -l pl
+ALSA Patch Bay to graficzny interfejs do zbioru patchy d¼wiêkowych dla
+API sequencera ALSY oraz API d¼wiêkowego JACK. Mo¿e u¿ywaæ FLTK 1.1
+lub GTKmm 2.0.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -42,8 +45,8 @@ rm -f missing
 %{__automake}
 %configure \
 %if %{?_with_fltk:0}%{!?_with_fltk:1}
-    --disable-fltk \
-    --disable-fltk-test \
+	--disable-fltk \
+	--disable-fltk-test \
 %endif
 %{?_without_gtkmm:--disable-gtkmm}
 
@@ -57,12 +60,14 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
 %files
 %defattr(644,root,root,755)
 %doc NEWS AUTHORS README
 %attr(755,root,root) %{_bindir}/*
-%{_desktopdir}/*.desktop
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/driver
 %attr(755,root,root) %{_libdir}/%{name}/driver/*.so
+%dir %{_libdir}/%{name}/ui
 %attr(755,root,root) %{_libdir}/%{name}/ui/*.so
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*.png
