@@ -1,0 +1,26 @@
+diff -aurN alsa-patch-bay-0.5.2.orig/alsa-patch-bay.desktop alsa-patch-bay-0.5.2/alsa-patch-bay.desktop
+--- alsa-patch-bay-0.5.2.orig/alsa-patch-bay.desktop	2002-12-29 02:08:20.000000000 +0100
++++ alsa-patch-bay-0.5.2/alsa-patch-bay.desktop	2003-10-01 12:39:15.484632312 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=ALSA Patch Bay
++Name[pl]=ALSA Patch Bay
+ Comment=Graphical patch bay for the ALSA sequencer
++Comment[pl]=Graficzny interfejs dla sekwencera ALSY
+ Exec=alsa-patch-bay
+ Icon=5-pin-din.png
+ Terminal=false
+diff -aurN alsa-patch-bay-0.5.2.orig/jack-patch-bay.desktop alsa-patch-bay-0.5.2/jack-patch-bay.desktop
+--- alsa-patch-bay-0.5.2.orig/jack-patch-bay.desktop	2003-02-08 00:04:18.000000000 +0100
++++ alsa-patch-bay-0.5.2/jack-patch-bay.desktop	2003-10-01 12:39:13.520930840 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=JACK Patch Bay
++Name[pl]=JACK Patch Bay
+ Comment=Graphical patch bay for JACK
++Comment[pl]=Graficzny interfejs dla JACKa
+ Exec=jack-patch-bay
+ Icon=5-pin-din.png
+ Terminal=false
