@@ -34,32 +34,52 @@ API sequencera ALSY oraz API d¼wiêkowego JACK. Mo¿e u¿ywaæ FLTK 1.1
 lub GTKmm 2.0.
 
 %package driver-alsa
-Summary:	-
+Summary:	ALSA audio driver for ALSA Patch Bay
+Summary(pl):	Sterownik d¼wiêku ALSA dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name}-%{version}
 
 %description driver-alsa
+ALSA audio driver for ALSA Patch Bay.
+
+%description driver-alsa -l pl
+Sterownik d¼wiêku ALSA dla ALSA Patch Bay.
 
 %package driver-jack
-Summary:	-
+Summary:	JACK audio driver for ALSA Patch Bay
+Summary(pl):	Sterownik d¼wiêku JACK dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name}-%{version}
 
 %description driver-jack
+JACK audio driver for ALSA Patch Bay.
+
+%description driver-jack -l pl
+Sterownik d¼wiêku JACK dla ALSA Patch Bay.
 
 %package ui-fltk
-Summary:	-
+Summary:	FLTK-based GUI for ALSA Patch Bay
+Summary(pl):	Oparte na FLTK GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name}-%{version}
 
 %description ui-fltk
+FLTK-based graphical user interface for ALSA Patch Bay.
+
+%description ui-fltk -l pl
+Oparty na FLTK graficzny interfejs u¿ytkownika do ALSA Patch Bay.
 
 %package ui-gtkmm
-Summary:	-
+Summary:	GTKmm-based GUI for ALSA Patch Bay
+Summary(pl):	Oparte na GTKmm GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name}-%{version}
 
 %description ui-gtkmm
+GTKmm-based GUI for ALSA Patch Bay.
+
+%description ui-gtkmm -l pl
+Oparte na GTKmm GUI do ALSA Patch Bay.
 
 %prep
 %setup -q
