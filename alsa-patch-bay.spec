@@ -102,7 +102,7 @@ Oparte na GTKmm GUI do ALSA Patch Bay.
 
 %build
 %{__libtoolize}
-%{__autoheader}                                                                 
+%{__autoheader}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
