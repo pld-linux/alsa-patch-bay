@@ -7,23 +7,25 @@
 Summary:	Graphical patch bay for the ALSA sequencer and JACK
 Summary(pl):	Graficzny interfejs dla sekwencera ALSY i JACKa
 Name:		alsa-patch-bay
-Version:	0.5.2
-Release:	1
+Version:	1.0.0
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
-# Source0-md5:	9f74408139c0835583608a9663202729
+# Source0-md5:	3aa458f6bee8b83b2cf7330707d72430
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-desktop_pl.patch
+Patch2:		%{name}-missing_m4.patch
 URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_fltk:BuildRequires:	fltk-devel >= 1.1}
 %{?with_gtkmm:BuildRequires:	gtkmm-devel >= 2.0.0}
-BuildRequires:	jack-audio-connection-kit-devel
+BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 %{?with_ladcca:BuildRequires:	ladcca-devel}
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+Requires:	%{name}-ui
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -43,6 +45,7 @@ Summary:	ALSA audio driver for ALSA Patch Bay
 Summary(pl):	Sterownik d¼wiêku ALSA dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-ui
 
 %description driver-alsa
 ALSA audio driver for ALSA Patch Bay.
@@ -55,6 +58,8 @@ Summary:	JACK audio driver for ALSA Patch Bay
 Summary(pl):	Sterownik d¼wiêku JACK dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Provides:	jack-patch-bay
+Requires:	%{name}-driver-alsa
+Requires:	%{name}-ui
 Requires:	%{name} = %{version}-%{release}
 
 %description driver-jack
@@ -68,6 +73,7 @@ Summary:	FLTK-based GUI for ALSA Patch Bay
 Summary(pl):	Oparte na FLTK GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-ui
 
 %description ui-fltk
 FLTK-based graphical user interface for ALSA Patch Bay.
@@ -80,6 +86,7 @@ Summary:	GTKmm-based GUI for ALSA Patch Bay
 Summary(pl):	Oparte na GTKmm GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
+Provides:	%{name}-ui
 
 %description ui-gtkmm
 GTKmm-based GUI for ALSA Patch Bay.
@@ -91,19 +98,18 @@ Oparte na GTKmm GUI do ALSA Patch Bay.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
+%{__autoheader}                                                                 
 %{__aclocal} -I m4
 %{__autoconf}
-%{__autoheader}
 %{__automake}
-# Note: ladcca is curently broken and doesn't work as should
 %configure \
-	%{!?with_fltk: --disable-fltk --disable-fltk-test} \
-	%{!?with_gtkmm: --disable-gtkmm} \
-	%{!?with_ladcca: --disable-ladcca} \
+	%{!?with_fltk:--disable-fltk --disable-fltk-test} \
+	%{!?with_gtkmm:--disable-gtkmm} \
+	%{?without_ladcca:--disable-ladcca} \
 	
 %{__make}
 
@@ -119,7 +125,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc NEWS AUTHORS README
-%attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/driver
 %dir %{_libdir}/%{name}/ui
@@ -127,11 +132,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files driver-alsa
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/alsa-patch-bay
 %attr(755,root,root) %{_libdir}/%{name}/driver/alsa.so
 %{_desktopdir}/alsa-patch-bay.desktop
 
 %files driver-jack
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/jack-patch-bay
 %attr(755,root,root) %{_libdir}/%{name}/driver/jack.so
 %{_desktopdir}/jack-patch-bay.desktop
 
