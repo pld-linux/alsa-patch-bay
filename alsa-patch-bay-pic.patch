@@ -1,0 +1,66 @@
+--- alsa-patch-bay-1.0.0/src/gui/gtkmm/Makefile.am.orig	2003-02-08 00:13:38.000000000 +0100
++++ alsa-patch-bay-1.0.0/src/gui/gtkmm/Makefile.am	2005-04-23 19:39:07.000000000 +0200
+@@ -1,7 +1,5 @@
+ 
+-EXTRA_PROGRAMS = gtkmm.so
+-
+-gtkmm_so_SOURCES = \
++gtkmm_la_SOURCES = \
+ 	apb-gtkmm.cpp apb-gtkmm.h \
+ 	button-array.cpp button-array.h \
+ 	choice.cpp choice.h \
+@@ -10,19 +8,19 @@
+ 	main-window.cpp main-window.h \
+ 	logbox.cpp logbox.h
+ 
+-gtkmm_so_CXXFLAGS = \
++gtkmm_la_CXXFLAGS = \
+ 	$(APB_CXXFLAGS) \
+ 	$(GTKMM_CFLAGS) \
+ 	$(LADCCA_CFLAGS) \
+ 	-DAPB_DESKTOP_PREFIX=\"$(APB_DESKTOP_PREFIX)\"
+ 
+-gtkmm_so_LDFLAGS = \
++gtkmm_la_LDFLAGS = \
+ 	$(GTKMM_LIBS) \
+-	-shared
++	-module -avoid-version
+ 
+ uiplugindir = $(pkglibdir)/ui
+ 
+ 
+ if GTKMM
+-uiplugin_PROGRAMS = gtkmm.so
++uiplugin_LTLIBRARIES = gtkmm.la
+ endif # GTKMM
+--- alsa-patch-bay-1.0.0/src/gui/fltk/Makefile.am.orig	2003-02-08 00:14:59.000000000 +0100
++++ alsa-patch-bay-1.0.0/src/gui/fltk/Makefile.am	2005-04-23 19:38:41.000000000 +0200
+@@ -1,17 +1,15 @@
+ 
+-EXTRA_PROGRAMS = fltk.so
+-
+-fltk_so_SOURCES = \
++fltk_la_SOURCES = \
+ 	apb-fltk.cpp apb-fltk.h
+ 
+-fltk_so_CXXFLAGS = \
++fltk_la_CXXFLAGS = \
+ 	$(APB_CXXFLAGS) \
+ 	$(FLTK_CXXFLAGS) \
+ 	$(LADCCA_CFLAGS)
+ 
+-fltk_so_LDFLAGS = \
++fltk_la_LDFLAGS = \
+ 	$(FLTK_LDFLAGS) \
+-	-shared
++	-module -avoid-version
+ 
+ uiplugindir = $(pkglibdir)/ui
+ 
+@@ -19,5 +17,5 @@
+ PLUGINS = 
+ 
+ if FLTK
+-uiplugin_PROGRAMS = fltk.so
++uiplugin_LTLIBRARIES = fltk.la
+ endif #FLTK
