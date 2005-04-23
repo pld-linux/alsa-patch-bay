@@ -8,7 +8,7 @@ Summary:	Graphical patch bay for the ALSA sequencer and JACK
 Summary(pl):	Graficzny interfejs dla sekwencera ALSY i JACK-a
 Name:		alsa-patch-bay
 Version:	1.0.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
@@ -16,6 +16,7 @@ Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-desktop_pl.patch
 Patch2:		%{name}-missing_m4.patch
+Patch3:		%{name}-pic.patch
 URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -100,6 +101,7 @@ Oparte na GTKmm GUI do ALSA Patch Bay.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
@@ -110,7 +112,8 @@ Oparte na GTKmm GUI do ALSA Patch Bay.
 %configure \
 	%{!?with_fltk:--disable-fltk --disable-fltk-test} \
 	%{!?with_gtkmm:--disable-gtkmm} \
-	%{!?with_ladcca:--disable-ladcca}
+	%{!?with_ladcca:--disable-ladcca} \
+	--disable-static
 	
 %{__make}
 
@@ -119,6 +122,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/ui/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
