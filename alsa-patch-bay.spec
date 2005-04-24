@@ -8,7 +8,7 @@ Summary:	Graphical patch bay for the ALSA sequencer and JACK
 Summary(pl):	Graficzny interfejs dla sekwencera ALSY i JACK-a
 Name:		alsa-patch-bay
 Version:	1.0.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
