@@ -64,3 +64,68 @@
 -uiplugin_PROGRAMS = fltk.so
 +uiplugin_LTLIBRARIES = fltk.la
  endif #FLTK
+--- alsa-patch-bay-1.0.0/src/driver/alsa/Makefile.am.orig	2003-02-08 00:08:54.000000000 +0100
++++ alsa-patch-bay-1.0.0/src/driver/alsa/Makefile.am	2005-04-24 02:27:31.000000000 +0200
+@@ -1,25 +1,23 @@
+ 
+-EXTRA_PROGRAMS = alsa.so
+-
+-alsa_so_SOURCES = \
++alsa_la_SOURCES = \
+ 	alsa-driver.cpp alsa-driver.h \
+ 	alsa-addr.cpp alsa-addr.h
+ 
+-alsa_so_CXXFLAGS = \
++alsa_la_CXXFLAGS = \
+ 	$(APB_CXXFLAGS) \
+ 	$(LADCCA_CFLAGS) \
+ 	-I$(top_srcdir)/src
+ 
+-alsa_so_LDFLAGS = \
++alsa_la_LDFLAGS = \
+ 	$(ALSA_LIBS) \
+ 	$(LADCCA_LIBS) \
+ 	-lpthread \
+-	-shared
++	-module -avoid-version
+ 
+ driverplugindir = $(pkglibdir)/driver
+ 
+ 
+ if ALSA
+-driverplugin_PROGRAMS = alsa.so
++driverplugin_LTLIBRARIES = alsa.la
+ endif # ALSA
+ 
+--- alsa-patch-bay-1.0.0/src/driver/jack/Makefile.am.orig	2003-02-08 00:13:01.000000000 +0100
++++ alsa-patch-bay-1.0.0/src/driver/jack/Makefile.am	2005-04-24 02:27:57.000000000 +0200
+@@ -1,24 +1,22 @@
+ 
+-EXTRA_PROGRAMS = jack.so
+-
+-jack_so_SOURCES = \
++jack_la_SOURCES = \
+ 	jack-driver.cpp jack-driver.h \
+ 	jack-addr.cpp jack-addr.h
+ 
+-jack_so_CXXFLAGS = \
++jack_la_CXXFLAGS = \
+ 	$(APB_CXXFLAGS) \
+ 	$(LADCCA_CFLAGS) \
+ 	$(JACK_CFLAGS) \
+ 	-I$(top_srcdir)/src
+ 
+-jack_so_LDFLAGS = \
++jack_la_LDFLAGS = \
+ 	$(JACK_LIBS) \
+ 	$(LADCCA_LIBS) \
+ 	-lpthread \
+-	-shared
++	-module -avoid-version
+ 
+ driverplugindir = $(pkglibdir)/driver
+ 
+ if JACK
+-driverplugin_PROGRAMS = jack.so
++driverplugin_LTLIBRARIES = jack.la
+ endif # JACK
