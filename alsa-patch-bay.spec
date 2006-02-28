@@ -58,10 +58,10 @@ Sterownik d¼wiêku ALSA dla ALSA Patch Bay.
 Summary:	JACK audio driver for ALSA Patch Bay
 Summary(pl):	Sterownik d¼wiêku JACK-a dla ALSA Patch Bay
 Group:		X11/Applications/Sound
-Provides:	jack-patch-bay
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-driver-alsa = %{version}-%{release}
 Requires:	%{name}-ui = %{version}-%{release}
+Provides:	jack-patch-bay
 
 %description driver-jack
 JACK audio driver for ALSA Patch Bay.
@@ -114,7 +114,7 @@ Oparte na GTKmm GUI do ALSA Patch Bay.
 	%{!?with_gtkmm:--disable-gtkmm} \
 	%{!?with_ladcca:--disable-ladcca} \
 	--disable-static
-	
+
 %{__make}
 
 %install
