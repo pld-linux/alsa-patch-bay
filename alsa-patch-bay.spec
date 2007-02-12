@@ -5,7 +5,7 @@
 %bcond_without	ladcca	# with ladcca support
 #
 Summary:	Graphical patch bay for the ALSA sequencer and JACK
-Summary(pl.UTF-8):   Graficzny interfejs dla sekwencera ALSY i JACK-a
+Summary(pl.UTF-8):	Graficzny interfejs dla sekwencera ALSY i JACK-a
 Name:		alsa-patch-bay
 Version:	1.0.0
 Release:	3
@@ -43,7 +43,7 @@ i wiele innych.
 
 %package driver-alsa
 Summary:	ALSA audio driver for ALSA Patch Bay
-Summary(pl.UTF-8):   Sterownik dźwięku ALSA dla ALSA Patch Bay
+Summary(pl.UTF-8):	Sterownik dźwięku ALSA dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-ui = %{version}-%{release}
@@ -56,7 +56,7 @@ Sterownik dźwięku ALSA dla ALSA Patch Bay.
 
 %package driver-jack
 Summary:	JACK audio driver for ALSA Patch Bay
-Summary(pl.UTF-8):   Sterownik dźwięku JACK-a dla ALSA Patch Bay
+Summary(pl.UTF-8):	Sterownik dźwięku JACK-a dla ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-driver-alsa = %{version}-%{release}
@@ -71,7 +71,7 @@ Sterownik dźwięku JACK-a dla ALSA Patch Bay.
 
 %package ui-fltk
 Summary:	FLTK-based GUI for ALSA Patch Bay
-Summary(pl.UTF-8):   Oparte na FLTK GUI do ALSA Patch Bay
+Summary(pl.UTF-8):	Oparte na FLTK GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Provides:	%{name}-ui = %{version}-%{release}
@@ -84,7 +84,7 @@ Oparty na FLTK graficzny interfejs użytkownika do ALSA Patch Bay.
 
 %package ui-gtkmm
 Summary:	GTKmm-based GUI for ALSA Patch Bay
-Summary(pl.UTF-8):   Oparte na GTKmm GUI do ALSA Patch Bay
+Summary(pl.UTF-8):	Oparte na GTKmm GUI do ALSA Patch Bay
 Group:		X11/Applications/Sound
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtkmm22
