@@ -17,6 +17,8 @@ Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-desktop_pl.patch
 Patch2:		%{name}-missing_m4.patch
 Patch3:		%{name}-pic.patch
+Patch4:		%{name}-make-jN.patch
+Patch5:		%{name}-ac.patch
 URL:		http://pkl.net/~node/alsa-patch-bay.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -102,6 +104,8 @@ Oparte na GTKmm GUI do ALSA Patch Bay.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %{__libtoolize}
@@ -122,6 +126,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+ln -sf %{_bindir}/alsa-patch-bay $RPM_BUILD_ROOT%{_bindir}/jack-patch-bay
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/ui/*.la
 
