@@ -1,0 +1,11 @@
+--- alsa-patch-bay-1.0.0/configure.ac.orig	2007-12-21 15:26:40.754824476 +0100
++++ alsa-patch-bay-1.0.0/configure.ac	2007-12-21 15:33:00.696861936 +0100
+@@ -8,7 +8,7 @@
+ 
+ AC_PROG_CXX
+ AC_PROG_LIBTOOL
+-
++AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+ 
+ # *********************
+ # ******* fltk ********
