@@ -127,7 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-ln -sf %{_bindir}/alsa-patch-bay $RPM_BUILD_ROOT%{_bindir}/jack-patch-bay
+ln -sf alsa-patch-bay $RPM_BUILD_ROOT%{_bindir}/jack-patch-bay
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/ui/*.la
 
