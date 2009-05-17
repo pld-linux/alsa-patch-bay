@@ -11,7 +11,7 @@ Version:	1.0.0
 Release:	3
 License:	GPL
 Group:		X11/Applications/Sound
-Source0:	http://pkl.net/~node/software/%{name}-%{version}.tar.gz
+Source0:	http://pkl.net/~node/software/alsa-patch-bay/%{name}-%{version}.tar.gz
 # Source0-md5:	3aa458f6bee8b83b2cf7330707d72430
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-desktop_pl.patch
@@ -19,7 +19,7 @@ Patch2:		%{name}-missing_m4.patch
 Patch3:		%{name}-pic.patch
 Patch4:		%{name}-make-jN.patch
 Patch5:		%{name}-ac.patch
-URL:		http://pkl.net/~node/alsa-patch-bay.html
+URL:		http://pkl.net/~node/software/alsa-patch-bay/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_fltk:BuildRequires:	fltk-devel >= 1.1}
